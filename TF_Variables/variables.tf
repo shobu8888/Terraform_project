@@ -5,5 +5,5 @@ variable "AWS_SECRET_KEY" {
   
 }
 variable "AWS_REGION" {
-  default = "us-eat-1"
+  default = "us-east-1"
 }
