@@ -1,10 +1,10 @@
 
 resource "aws_instance" "MyFirstInstnace" {
-  ami           = "ami-0b0ea68c435eb488d"
+  ami           =  var.AMIS
   instance_type = "t2.micro"
   tags = {
     Name="demoinstance"
   }
-  security_groups = "${var.Security_Group}"
+  security_groups = var.Security_Group
 }
 
