@@ -22,14 +22,3 @@ variable "AMIS" {
     }
 }
 
-variable "PUBLIC_KEY" {
-  default = "levelup_key.pub"
-}
-
-variable "PRIVATE_KEY" {
-  default = "levelup_key"
-}
-
-variable "USER_NAME" {
-  default = "ubuntu"
-}
