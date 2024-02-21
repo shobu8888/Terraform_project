@@ -10,7 +10,7 @@ resource "aws_instance" "MyFirstInstnace" {
   tags = {
     Name="demoinstance"
   }
-  security_groups = var.Security_Group
+
 
   provisioner "file" {
     source = "install-niginx.sh"
