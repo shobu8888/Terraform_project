@@ -1,5 +1,5 @@
 resource "aws_eip" "levelup-nat" {
-  domain = "true"
+  domain = "vpc"
 }
 
 
