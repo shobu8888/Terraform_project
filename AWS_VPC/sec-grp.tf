@@ -1,10 +1,10 @@
 resource "aws_security_group" "sg_local" {
-  name        = "sg-local"
+  name        = "sg_local"
   description = "sg created via tf"
   vpc_id      = aws_vpc.local-vpc.id
 
   tags = {
-    Name = "sg-local"
+    Name = "sg_local"
   }
 
   egress {
