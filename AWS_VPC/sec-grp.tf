@@ -25,6 +25,6 @@ resource "aws_security_group" "sg_local" {
     to_port = 80
     from_port = 80 
     cidr_blocks = ["0.0.0.0/0"]
-    protocol = "http"
+    protocol = "tcp"
   }
 }
