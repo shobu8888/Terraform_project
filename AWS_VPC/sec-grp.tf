@@ -20,4 +20,11 @@ resource "aws_security_group" "sg_local" {
     cidr_blocks = ["0.0.0.0/0"]
     protocol = "tcp"
   }
+
+    ingress {
+    to_port = 80
+    from_port = 80 
+    cidr_blocks = ["0.0.0.0/0"]
+    protocol = "http"
+  }
 }
