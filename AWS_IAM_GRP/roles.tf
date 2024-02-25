@@ -5,14 +5,14 @@ resource "aws_iam_role" "test_role" {
   # Terraform expression result to valid JSON syntax.
   assume_role_policy = <<EOF
   {
-    "Version" = "2012-10-17"
-    "Statement" = [
+    "Version": "2012-10-17"
+    "Statement": [
       {
-        "Action" = "sts:AssumeRole"
-        "Effect" = "Allow"
-        Sid    = ""
-        "Principal" = {
-          "Service" = "ec2.amazonaws.com"
+        "Action": "sts:AssumeRole"
+        "Effect": "Allow"
+        Sid: ""
+        "Principal": {
+          "Service": "ec2.amazonaws.com"
         }
       },
     ]
@@ -29,14 +29,14 @@ resource "aws_iam_role_policy" "test_policy" {
   # Terraform expression result to valid JSON syntax.
   policy = <<EOF
   {
-    "Version" = "2012-10-17"
-    "Statement" = [
+    "Version": "2012-10-17"
+    "Statement": [
       {
-        "Action" = [
+        "Action": [
           "s3:*",
         ]
-        "Effect"   = "Allow"
-        "Resource" = [
+        "Effect": "Allow"
+        "Resource": [
             "arn:aws:s3:::swap-s3-bucket-1212",
             "arn:aws:s3:::swap-s3-bucket-1212/*"
         ]
