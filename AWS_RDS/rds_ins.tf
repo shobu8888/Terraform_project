@@ -3,8 +3,8 @@ resource "aws_db_subnet_group" "marida_db_sub" {
     subnet_ids = [aws_subnet.private1.id , aws_subnet.private2.id]
 }
 
-resource "aws_db_parameter_group" "maria_para" {
-    name = "maria_para"
+resource "aws_db_parameter_group" "maria-para" {
+    name = "maria-para"
     family = "mariadb10.11"
 
     parameter {
@@ -23,7 +23,7 @@ resource "aws_db_instance" "MariaDB_local" {
   instance_class       = "db.t2.micro"
   username             = "db"
   password             = "db1234"
-  parameter_group_name = aws_db_parameter_group.maria_para.name
+  parameter_group_name = aws_db_parameter_group.maria-para.name
   skip_final_snapshot  = true
   multi_az             = false
   vpc_security_group_ids = [aws_security_group.sg_mariadb]
