@@ -22,7 +22,7 @@ resource "aws_db_instance" "MariaDB_local" {
   engine_version       = "10.11.6"
   instance_class       = "db.t3.micro"
   username             = "db"
-  password             = "db1234"
+  password             = "db12344321"
   storage_type = "gp2"
   parameter_group_name = aws_db_parameter_group.maria-para.name
   skip_final_snapshot  = true
