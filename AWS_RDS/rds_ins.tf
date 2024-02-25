@@ -26,7 +26,7 @@ resource "aws_db_instance" "MariaDB_local" {
   parameter_group_name = aws_db_parameter_group.maria-para.name
   skip_final_snapshot  = true
   multi_az             = false
-  vpc_security_group_ids = [aws_security_group.sg_mariadb]
+  vpc_security_group_ids = [aws_security_group.sg_mariadb.id]
   db_subnet_group_name = aws_db_subnet_group.marida_db_sub.name
   backup_retention_period = 30
   availability_zone = aws_subnet.private1.availability_zone
