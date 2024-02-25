@@ -4,21 +4,21 @@ resource "aws_iam_role" "test_role" {
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
   assume_role_policy = <<EOF
-  {
-    "Version": "2012-10-17"
-    "Statement": [
-      {
-        "Action": "sts:AssumeRole"
-        "Effect": "Allow"
-        Sid: ""
-        "Principal": {
-          "Service": "ec2.amazonaws.com"
-        }
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
       },
-    ]
-   }     
-  EOF
-  }
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
 
 
 resource "aws_iam_role_policy" "test_policy" {
@@ -27,23 +27,23 @@ resource "aws_iam_role_policy" "test_policy" {
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
-  policy = <<EOF
-  {
-    "Version": "2012-10-17"
+    policy = <<EOF
+{
+    "Version": "2012-10-17",
     "Statement": [
-      {
-        "Action": [
-          "s3:*",
-        ]
-        "Effect": "Allow"
-        "Resource": [
-            "arn:aws:s3:::swap-s3-bucket-1212",
-            "arn:aws:s3:::swap-s3-bucket-1212/*"
-        ]
-      },
+        {
+            "Effect": "Allow",
+            "Action": [
+              "s3:*"
+            ],
+            "Resource": [
+              "arn:aws:s3:::swap-s3-bucket-1212",
+              "arn:aws:s3:::swap-s3-bucket-1212/*"
+            ]
+        }
     ]
-  }
-  EOF
+}
+EOF
 }
 
 resource "aws_iam_instance_profile" "s3-profile" {
