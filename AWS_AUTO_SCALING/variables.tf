@@ -5,7 +5,7 @@ variable "AWS_REGION" {
 }
 
 variable "public-key-path" {
-  default = "key_pair.pub"
+  default = "key-pair.pub"
   
 }
 
