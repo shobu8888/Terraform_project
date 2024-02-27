@@ -2,13 +2,19 @@ resource "aws_key_pair" "pub_key_pair" {
     key_name = "pub_key_pair"
     public_key = file(var.public-key-path)
 }
+data "template_file" "ud_data" {
+  template = <<EOF
+   #!/bin/bash\napt-get update\napt-get -y install net-tools nginx\nMYIP=`ifconfig | grep -E '(inet 10)|(addr:10)' | awk '{ print $2 }' | cut -d ':' -f2`\necho 'Hello Team\nThis is my IP: '$MYIP > /var/www/html/index.html
+EOF
+
+}
 resource "aws_launch_template" "launch_temp" {
     name = "launch_temp"
     instance_type = "t2.micro"
     image_id = lookup(var.AMIS,var.AWS_REGION)
     key_name = aws_key_pair.pub_key_pair.key_name
     security_group_names = [aws_security_group.levelup-instance.name]
-    user_data       = "#!/bin/bash\napt-get update\napt-get -y install net-tools nginx\nMYIP=`ifconfig | grep -E '(inet 10)|(addr:10)' | awk '{ print $2 }' | cut -d ':' -f2`\necho 'Hello Team\nThis is my IP: '$MYIP > /var/www/html/index.html"
+    user_data       = "${base64decode(data.template_file.ud_data.rendered)}"
     lifecycle {
     create_before_destroy = true
     }    
