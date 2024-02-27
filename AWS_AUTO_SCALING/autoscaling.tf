@@ -25,7 +25,7 @@ resource "aws_autoscaling_group" "auto_grp" {
   health_check_type         = "ELB"
   desired_capacity          = 1
   force_delete              = true
-  load_balancers = ["${aws_lb.app-elb.id}"]
+  target_group_arns = [ "${aws_lb_target_group.test.arn}" ]
   launch_template {
     id = aws_launch_template.launch_temp.id
   }
