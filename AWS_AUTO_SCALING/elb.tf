@@ -1,5 +1,5 @@
-resource "aws_lb" "app_elb" {
-  name               = "app_elb"
+resource "aws_lb" "app-elb" {
+  name               = "app-elb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.levelup-elb-securitygroup.id]
