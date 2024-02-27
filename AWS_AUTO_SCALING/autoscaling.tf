@@ -9,11 +9,12 @@ resource "aws_launch_template" "launch_temp" {
     instance_type = "t2.micro"
     image_id = lookup(var.AMIS,var.AWS_REGION)
     key_name = aws_key_pair.pub_key_pair.key_name
-    security_group_names = [aws_security_group.levelup-instance.name]
+    vpc_security_group_ids = [aws_security_group.levelup-instance.id]
     user_data       = filebase64("ud-data.sh")
     lifecycle {
     create_before_destroy = true
     }    
+
 }
 
 resource "aws_autoscaling_group" "auto_grp" {
@@ -28,7 +29,8 @@ resource "aws_autoscaling_group" "auto_grp" {
   launch_template {
     id = aws_launch_template.launch_temp.id
   }
-  vpc_zone_identifier       = [aws_subnet.public1.id, aws_subnet.public2.id]
+  
+  vpc_zone_identifier = [aws_subnet.public1.id, aws_subnet.public2.id]
   
 
 
