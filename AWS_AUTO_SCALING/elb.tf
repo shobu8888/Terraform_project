@@ -3,7 +3,7 @@ resource "aws_lb" "app_elb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.levelup-elb-securitygroup.id]
-  subnets            = [aws_subnet.public1.id, aws_subnet.public.id]
+  subnets            = [aws_subnet.public1.id, aws_subnet.public2.id]
   tags = {
     Environment = "dev"
   }
@@ -30,7 +30,8 @@ resource "aws_lb_target_group" "test" {
     healthy_threshold   = 2
     unhealthy_threshold = 2
     timeout             = 3
-    path                = "HTTP:80/"
+    port                = "80"
+    protocol = "HTTP"
     interval            = 30
   }
 
