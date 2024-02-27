@@ -10,13 +10,13 @@ resource "aws_lb" "app-elb" {
 }
 
 resource "aws_lb_listener" "front_end" {
-  load_balancer_arn = aws_lb.app_elb.arn
+  load_balancer_arn = aws_lb.app-elb.arn
   port              = "80"
   protocol          = "HTTP"
 
    default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.front_end.arn
+    target_group_arn = aws_lb_target_group.test.arn
   }
 }
 
@@ -99,4 +99,9 @@ resource "aws_security_group" "levelup-instance" {
   tags = {
     Name = "levelup-instance"
   }
+}
+
+output "eld-endpoint" {
+    value = aws_lb.app-elb.dns_name
+  
 }
