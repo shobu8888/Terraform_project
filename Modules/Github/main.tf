@@ -10,3 +10,18 @@ module "ec2-instance" {
         Environment = "dev"
     }
 }
+
+variable "user_name" {
+  type = list(string)
+  default = [ "ram" , "shayam" ]
+}
+
+
+resource "aws_iam_user" "name" {
+  for_each = toset(var.user_name)
+  name = each.value
+}
+
+output "user" {
+  value = [for name1 in aws_aws_iam_user.name : "output is -  ${name1}"]
+}
