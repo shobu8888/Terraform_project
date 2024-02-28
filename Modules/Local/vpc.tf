@@ -7,6 +7,7 @@ resource "aws_vpc" "levelup_vpc" {
   enable_dns_hostnames  = true
   
   tags = {
+    name = var.vpcname
     Environment         = var.environment_tag
   }
 }
