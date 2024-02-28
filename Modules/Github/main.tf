@@ -23,5 +23,5 @@ resource "aws_iam_user" "name" {
 }
 
 output "user" {
-  value = [for name1 in aws_aws_iam_user.name : "output is -  ${name1}"]
+  value = [for name1 in var.user_name : "output is -  ${name1}"]
 }
