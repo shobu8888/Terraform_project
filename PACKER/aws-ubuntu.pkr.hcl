@@ -9,7 +9,7 @@ packer {
 
 source "amazon-ebs" "ubuntu" {
 
-  ami_name      = "learn-packer-linux-aws-${timestamp}"
+  ami_name      = "learn-packer-linux-aws-${regex_replace(timestamp(), "[- TZ:]", "")}"
   instance_type = "t2.micro"
   region        = "us-west-2"
   source_ami_filter {
@@ -30,7 +30,7 @@ build {
     "source.amazon-ebs.ubuntu"
   ]
   provisioner "file" {
-    source =  "./helloworld.txt",
+    source =  "./helloworld.txt"
     destination =  "/home/ubuntu/"
   }
   provisioner "shell" {
@@ -38,7 +38,11 @@ build {
       "ls -al /home/ubuntu",
        "cat /home/ubuntu/helloworld.txt"
     ]
+  }
+ provisioner "shell" {
     script =  "./install_nginx.sh"
   }
+
+
 
 }
