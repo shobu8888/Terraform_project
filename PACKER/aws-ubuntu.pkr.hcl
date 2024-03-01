@@ -8,7 +8,8 @@ packer {
 }
 
 source "amazon-ebs" "ubuntu" {
-  ami_name      = "learn-packer-linux-aws"
+
+  ami_name      = "learn-packer-linux-aws-${timestamp}"
   instance_type = "t2.micro"
   region        = "us-west-2"
   source_ami_filter {
@@ -28,4 +29,16 @@ build {
   sources = [
     "source.amazon-ebs.ubuntu"
   ]
+  provisioner "file" {
+    source =  "./helloworld.txt",
+    destination =  "/home/ubuntu/"
+  }
+  provisioner "shell" {
+    inline = [
+      "ls -al /home/ubuntu",
+       "cat /home/ubuntu/helloworld.txt"
+    ]
+    script =  "./install_nginx.sh"
+  }
+
 }
