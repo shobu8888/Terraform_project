@@ -12,7 +12,8 @@ resource "aws_launch_configuration" "as_conf" {
   image_id      = lookup(var.AMIS,var.AWS_REGION)
   instance_type = var.INS_TYPE
   key_name = aws_key_pair.public_key_pair.key_name
-  security_groups = [ aws_security_group.sec_group_ins.name ]
+  security_groups = [ aws_security_group.sec_group_ins.id ]
+  
 
   lifecycle {
     create_before_destroy = true
