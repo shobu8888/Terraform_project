@@ -18,10 +18,6 @@ variable "PUBLIC_SUBNET_1" {
     default = ""
 }
 
-variable "PUBLIC_SUBNET_1" {
-    type = string
-    default = ""
-}
 
 variable "PUBLIC_SUBNET_2" {
     type = string

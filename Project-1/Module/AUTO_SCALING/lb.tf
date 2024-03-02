@@ -1,6 +1,4 @@
-provider "aws" {
-  region = var.ENV
-}
+
 resource "aws_lb" "test" {
   name               = "elb-${var.ENV}"
   internal           = false
