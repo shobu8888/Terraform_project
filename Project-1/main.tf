@@ -19,7 +19,7 @@ module "elb-auto-create" {
     }
 
 module "rds-create" {
-    source = "..Module/RDS"
+    source = "./Module/RDS"
     ENV = "DEV"
     VPC_ID = module.vpc_create.vpc_id
     PRIVATE_SUBNET_1 = module.vpc_create.private_subnet_1
