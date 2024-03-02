@@ -70,6 +70,8 @@ resource "aws_security_group" "sec_group_ins" {
   vpc_id      =  var.VPC_ID
 
   ingress = {
+    from_port       = 80
+    to_port         = 80
     protocol = "-1"
     security_groups = ["${aws_security_group.sec_group_elb.id}"]
   }
