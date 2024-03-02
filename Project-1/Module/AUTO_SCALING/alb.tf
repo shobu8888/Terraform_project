@@ -28,7 +28,7 @@ resource "aws_autoscaling_group" "bar" {
   force_delete              = true
   launch_configuration      = aws_launch_configuration.as_conf.id
   vpc_zone_identifier       = [var.PUBLIC_SUBNET_1 ,var.PUBLIC_SUBNET_2]
-  load_balancers = [ aws ]
+  target_group_arns = [aws_lb_target_group.test.arn]
 
 
   tag {
