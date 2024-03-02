@@ -13,7 +13,15 @@ module "vpc_create" {
 module "elb-auto-create" {
     source = "./Module/AUTO_SCALING"
     ENV = "DEV"
+    VPC_ID = module.vpc_create.vpc_id
     PUBLIC_SUBNET_1 = module.vpc_create.public_subnet1_id
     PUBLIC_SUBNET_2 = module.vpc_create.public_subnet2_id
     }
 
+module "rds-create" {
+    source = "..Module/RDS"
+    ENV = "DEV"
+    VPC_ID = module.vpc_create.vpc_id
+    PRIVATE_SUBNET_1 = module.vpc_create.private_subnet_1
+    PRIVATE_SUBNET_2 = module.vpc_create.private_subnet_2
+}
