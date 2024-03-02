@@ -9,3 +9,11 @@ module "vpc_create" {
   PRIVATE_SUBNET_CIDR_2 = "10.1.4.0/24"
 
 }
+
+module "elb-auto-create" {
+    source = "./Module/AUTO_SCALING"
+    ENV = "DEV"
+    PUBLIC_SUBNET_1 = module.vpc_create.public_subnet1_id
+    PUBLIC_SUBNET_2 = module.vpc_create.public_subnet2_id
+    }
+

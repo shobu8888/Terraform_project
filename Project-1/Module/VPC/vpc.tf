@@ -139,4 +139,26 @@ resource "aws_route_table_association" "pri-2" {
   route_table_id = aws_route_table.private-rt.id
 }
 
+output "vpc_id" {
+  value = aws_vpc.main.id
+}
 
+output "private_subnet1_id" {
+  description = "Subnet ID"
+  value       = aws_subnet.private_subnet_1.id
+}
+
+output "private_subnet2_id" {
+  description = "Subnet ID"
+  value       = aws_subnet.private_subnet_2.id
+}
+
+output "public_subnet1_id" {
+  description = "Subnet ID"
+  value       = aws_subnet.public_subnet_1.id
+}
+
+output "public_subnet2_id" {
+  description = "Subnet ID"
+  value       = aws_subnet.public_subnet_2.id
+}
