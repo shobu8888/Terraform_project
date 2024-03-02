@@ -48,7 +48,7 @@ resource "aws_subnet" "private_subnet_1" {
   availability_zone = data.aws_availability_zones.available.names[0]
 
   tags = {
-    Name = "public-subnet-1-${var.ENV}"
+    Name = "private-subnet-1-${var.ENV}"
     Environment = "${var.ENV}"
   }
 }
@@ -59,7 +59,7 @@ resource "aws_subnet" "private_subnet_2" {
    availability_zone = data.aws_availability_zones.available.names[0]
 
   tags = {
-    Name = "public-subnet-2-${var.ENV}"
+    Name = "private-subnet-2-${var.ENV}"
     Environment = "${var.ENV}"
   }
 }
